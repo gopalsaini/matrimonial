@@ -13,6 +13,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap">
     <link rel="stylesheet" href="{{ asset('assets/css/vendors.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/aiz-core.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/custom-style.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/font-awesome.css')}}">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+	<script>
+var loading_set =
+    '<div style="text-align:center;width:100%;height:200px; position:relative;top:100px;"><i style="color:black;font-size:25px;" class="fa fa-refresh fa-spin fa-3x fa-fw"></i><p>Please wait</p></div>';
+var base_path = '@php echo url('/'); @endphp';
+</script>
 
     <style>
         body {

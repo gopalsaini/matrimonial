@@ -1,1 +1,80 @@
 /*your custom css goes here*/
+
+  
+  /* Product listing slider */
+  .toast{
+    position: fixed;
+    width: auto;
+    padding: 5px;
+    bottom: -100px;
+    left: 50%;
+    transition: 0.3s;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    font-size: 16px;
+    }
+    .toast-body{
+        display: flex;
+        align-items: center;
+    }
+    .toast i{
+        margin-right: 10px;
+        font-size: 20px;
+    }
+    .toast i.green{
+        color: #26bc4e;
+    }
+    .toast i.red{
+        color: #ff4343;
+    }
+    
+    .toast i.warning{
+        color: #f0ad4e;
+    }
+    
+  .toast.show{
+    bottom: 30px;
+    }
+ 
+ .load-btn {
+     border: 3px solid #fff;
+     -webkit-animation: spin 1s linear infinite;
+     animation: spin 1s linear infinite;
+     border-top: 3px solid #007bff;
+     border-radius: 50%;
+     width: 20px;
+     height: 20px;
+ }
+ 
+ /* Safari */
+ @-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+ }
+ 
+ @keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+ }
+ 
+ .load-btn-footer {
+     border: 3px solid #fff;
+     -webkit-animation: spinfooter 1s linear infinite;
+     animation: spinfooter 1s linear infinite;
+     border-top: 3px solid #007bff;
+     border-radius: 50%;
+     width: 12px;
+     height: 12px;
+ }
+ 
+ /* Safari */
+ @-webkit-keyframes spinfooter {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+ }
+ 
+ @keyframes spinfooter {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+ }
