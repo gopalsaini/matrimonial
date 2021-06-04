@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\commanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,9 +108,10 @@ Route::get('/test', function () {
 Route::get('/loginpage', function () {
     return view('login');
 });
-Route::get('/reg', function () {
-    return view('register');
-});
+Route::view('/reg', 'register');
+
+Route::post('/registerform', 'commanController@registration');
+
 Route::get('/packages', function () {
     return view('packages');
 });
@@ -145,10 +147,13 @@ Route::get('/profile-settings', function () {
 Route::get('/requests', function () {
     return view('requests');
 });
-
+Route::get('/profile', function () {
+    return view('profile');
+});
 
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/registration', 'apiController@registration');
