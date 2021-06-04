@@ -29,7 +29,10 @@ class PreLoginController extends Controller
         if($user){
             $this->sendOtp($request);
             return response(['error'=>false, 'msg'=>'Registration success and Otp send Your Number']);
-        }
+        }else{
+			return response(['error'=>true, 'msg'=>'Something went wrong.please try again']);
+
+		}
     }
 	
 	public function sendOtp(Request $request)

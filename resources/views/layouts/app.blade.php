@@ -4,54 +4,16 @@
 
 <head>
 
-    <meta name="csrf-token" content="pCHhx5t6xAKP8kjZh1vZjo4gkroIXgcjOycEh55w">
-    <meta name="app-url" content="https://demo.activeitzone.com/matrimonial/">
-    <meta name="file-base-url" content="https://demo.activeitzone.com/matrimonial/public/">
+      <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Title -->
     <title>CK Matrimony | Best Matrimoni</title>
-
-    <!-- Required Meta Tags Always Come First -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Best rated Matrimonial PHP script" />
-    <meta name="keywords" content="Keyword1, keyword2">
-
-    
-        <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="CK Matrimony">
-    <meta itemprop="description" content="Best rated Matrimonial PHP script">
-    <meta itemprop="image" content="">
-
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@publisher_handle">
-    <meta name="twitter:title" content="CK Matrimony">
-    <meta name="twitter:description" content="Best rated Matrimonial PHP script">
-    <meta name="twitter:creator" content="@author_handle">
-    <meta name="twitter:image" content="">
-
-    <!-- Open Graph data -->
-    <meta property="og:title" content="CK Matrimony" />
-    <meta property="og:type" content="Business Site" />
-    <meta property="og:url" content="https://demo.activeitzone.com/matrimonial" />
-    <meta property="og:image" content="" />
-    <meta property="og:description" content="Best rated Matrimonial PHP script" />
-    <meta property="og:site_name" content="CK Matrimony" />
-    <meta property="fb:app_id" content="asdws121">
-
-    
     <!-- Favicon -->
     <link rel="icon" href="https://demo.activeitzone.com/matrimonial/public/uploads/all/HKb4dap327ArsZtb12KXUNeFVCfbA7mZBqQIGrCw.png">
-
     <!-- CSS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap">
     <link rel="stylesheet" href="{{ asset('assets/css/vendors.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/aiz-core.css')}}">
 
-    
-    <script>
-        var AIZ = AIZ || {};
-    </script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -99,35 +61,7 @@
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=3432u"></script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '3432u');
-    </script>
     
-        <!-- Facebook Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', asdws121);
-          fbq('track', 'PageView');
-    </script>
-    <noscript>
-        <img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=asdws121/&ev=PageView&noscript=1" />
-    </noscript>
-    <!-- End Facebook Pixel Code -->
-    
-    
-
 </head>
   <header class="aiz-header shadow-md bg-white border-gray-300">
         <div class="aiz-navbar position-relative">
@@ -509,62 +443,26 @@ EN-IN" lang="EN-IN">We aspire to provide the best service to our clients. Our te
             </div>
         </div>
     </div>
-
-        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
-        window.fbAsyncInit = function() {
-            FB.init({
-                xfbml            : true,
-                version          : 'v3.3'
-            });
-            };
-
-            (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div id="fb-root"></div>
-    <!-- Your customer chat code -->
-    <div class="fb-customerchat" attribution=setup_tool page_id="25">
-    </div>
     
-    <script src="{{ asset('assets/js/vendors.js')}}"></script>
-    <script src="{{ asset('assets/js/aiz-core.js')}}"></script>
+    <div class="toast" data-autohide="true" style="padding:20px;border-radius: 10px;">
+      <div class="toast-body">
 
-        <script type="text/javascript">
-				function loginModal(){
-					// alert('sdfguk');
-					$('#LoginModal').modal();
-				}
+      </div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="{{ asset('assets/js/vendors.js')}}"></script>
+      <script src="{{ asset('assets/js/aiz-core.js')}}"></script>
+      <script src="{{ asset('assets/js/ajax.js')}}"></script>
+    <script type="text/javascript">
+		function loginModal(){
+			// alert('sdfguk');
+			$('#LoginModal').modal();
+		}
 
         function package_update_alert(){
           $('.package_update_alert_modal').modal('show');
         }
     </script>
-
-    <script type="text/javascript">
-        
-        
-
-    </script>
-
-    
-            <script type="text/javascript">
-            // Login credentials autoFill for demo
-            function autoFill1(){
-                $('#email').val('user2@example.com');
-                $('#password').val('12345678');
-            }
-            function autoFill2(){
-                $('#email').val('user17@example.com');
-                $('#password').val('12345678');
-            }
-        </script>
-    
-    
 
 </body>
 
