@@ -34,7 +34,6 @@ class PreLoginController extends Controller
 
 		}
     }
-	
 	public function sendOtp(Request $request)
     {
         $mobile=$request->json()->get("mobile");    
@@ -47,6 +46,22 @@ class PreLoginController extends Controller
             return response()->json(['error' => false,'msg'=>'OTP sent successfully on your registered mobile no.']);
         }
         //echo "otp send done";
+    }
+	
+    //SUBMIT OTP
+     public function submitOtp(Request $request)
+    {	
+        $otp = $request->json()->get("otp");
+        $data = Member::where('otp',$otp)->first();
+        if(!$data){
+            return response(['error' => true,'msg'=>'Invalid OTP']);
+        }elseif($otp == $data->otp) {
+                $id = $data->id;
+                $user = Member::where('id',$id)->update(['otp_verify_status'=>'1']);
+                $accessToken = $data->createToken('authToken')->accessToken;
+                DB::insert('insert into members(user_id) values(?)',[$data->id]);
+                return response(['error' => false,'msg'=>'OTP Verification Success','user_verify'=>true,'token'=>$accessToken]);
+        }
     }
 }
 //prelogin c

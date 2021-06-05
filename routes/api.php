@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/registration','API\PreLoginController@registration');
+Route::post('/submitotp','API\PreLoginController@submitOtp');
 
