@@ -22,7 +22,7 @@ class commanController extends Controller
 				'gender' => 'required',
 				'dob' => 'required',
 				'email' => 'required|email',
-				'mobile' => 'required',
+				'mobile' => 'required|unique:users',
 				'password' => 'required',
 				'password_confirmation' => 'required_with:password|same:password|min:6'
             ]);
@@ -69,10 +69,38 @@ class commanController extends Controller
         $token = json_decode($otp,true);
         if(!$token['error']){
             Session::put('user_token',$token['token']);
-        return $otp;  
-    }
-    
+		}
+		return $otp; 
     } 
-//preloginweb
+	
+	//SEND OTP
+    public function sendotp(Request $request)
+	{ 
+        $data=json_encode(['mobile'=>$request->mobile]);
+		return commonHelper::callAPI('POST','/sendotp',$data); 
+    }
+	
+	//LOGIN 
+	public function login(Request $request){
+        $validator = \Validator::make($request->all(), [
+            'mobile' => 'required|min:10|max:10',
+            'password_otp'=>'required|min:6',
+        ]);
+        if ($validator->fails())
+        {
+            return response(['error'=>true,'msg'=>$validator->errors()->all()]);
+        }
+		$mobile =$request->post('mobile');
+		$password_otp =$request->post('password_otp');
+        $data=json_encode(['mobile'=>$mobile,'password_otp'=>$password_otp]);
+        $login=commonHelper::callAPI('POST','/login',$data);
+        $token = json_decode($login,true);
+        if(!$token['error'] && $token['user_verify']){
+            Session::put('user_token',$token['token']);
+        }
+		return $login;
+        
+    }
+
 }
 

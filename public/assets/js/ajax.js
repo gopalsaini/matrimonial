@@ -58,7 +58,7 @@ $("form#test").submit(function(e){
 
                 if(data.user_verify){
                     showMsg('success',data.msg);
-                    location.href="/";
+                    location.href="/dashboard";
                 }else{
                     showMsg('success',data.msg);
 
@@ -68,7 +68,6 @@ $("form#test").submit(function(e){
                     jQuery('#otpsubmitform').show();
                     $("input[name=dig1]").focus();
                     jQuery('#regform').hide();
-                    $('#'+formId)[0].reset();
                     var resendOtpTime=30;
                     interval= setInterval(() => {
                         if(resendOtpTime>0){
@@ -138,7 +137,7 @@ $(document).ready(function(){
 
                         if(data.user_verify){
                             showMsg('success',data.msg);
-                            location.href="/";
+                            location.href="/dashboard";
                         }else{
                             showMsg('success',data.msg);
     

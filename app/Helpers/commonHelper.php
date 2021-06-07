@@ -36,7 +36,6 @@ class commonHelper{
 
                 ->patch();
         }elseif($method == 'POST'){
-			
             return $response = Curl::to($url)
 
                 ->withData($data)
