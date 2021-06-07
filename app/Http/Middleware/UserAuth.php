@@ -6,7 +6,7 @@ use Closure;
 use Session;
 use Illuminate\Http\Request;
 
-class admin
+class UserAuth
 {
     /**
      * Handle an incoming request.
@@ -15,19 +15,19 @@ class admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
-        $id = Session::get('admin_id');
-        if(isset($id))
+        
+        $session = Session::get('user_token');
+        if(isset($session))
         {
             
-
         }else{
-            $request->session()->flash('error','Access Denied');
-            return redirect('/admin');
+            
 
+            return redirect('login');
         }
-        
+
         return $next($request);
     }
 }

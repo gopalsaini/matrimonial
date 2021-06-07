@@ -105,10 +105,6 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
-Route::get('/loginpage', function () {
-    return view('login');
-});
-
 
 Route::get('/packages', function () {
     return view('packages');
@@ -152,8 +148,9 @@ Route::get('/profile', function () {
 
 
 Auth::routes();
-Route::view('/reg', 'register');
 Route::post('/registerform', 'commanController@registration');
 Route::get('/home', 'HomeController@index')->name('home');
 //otp send
 Route::post('/submitotp', 'commanController@submitOtp');
+Route::post('/user/sendotp', 'commanController@sendotp');
+Route::post('/user/login', 'commanController@login');

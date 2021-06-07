@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Session;
-use App\Models\Member;
+use App\User;
 use Auth;
 use DB; 
 use Hash;
+use Illuminate\Support\Str;
+
 class PreLoginController extends Controller
 {
   	//registration details
@@ -17,14 +19,14 @@ class PreLoginController extends Controller
 	public function registration(Request $request)
     {	 
 		 $validatedData['behalf'] = $request->json()->get("behalf");
-		 $validatedData['fname'] = $request->json()->get("fname");
-		 $validatedData['lname'] = $request->json()->get("lname");
+		 $validatedData['name'] = $request->json()->get("fname")." ".$request->json()->get("lname");
 		 $validatedData['gender'] = $request->json()->get("gender");
 		 $validatedData['dob'] = $request->json()->get("dob");
 		 $validatedData['email'] = $request->json()->get("email");
 		 $validatedData['mobile'] = $request->json()->get("mobile");
+		  $validatedData['code'] = Str::random(9);
          $validatedData['password'] = Hash::make($request->json()->get("password"));
-         $user = Member::create($validatedData);
+         $user = User::create($validatedData);
          $mobile = $request->json()->get("mobile");
         if($user){
             $this->sendOtp($request);
@@ -38,30 +40,62 @@ class PreLoginController extends Controller
     {
         $mobile=$request->json()->get("mobile");    
         $otp = mt_rand(100000,999999);
-        $getdata=Member::where('mobile',$mobile)->first();
+        $getdata=User::where('mobile',$mobile)->first();
         if(!$getdata){
             return response(['error' => true,'msg'=>'Mobile no. does not exist.']);
         }else{
-            $getotp=Member::where('mobile',$mobile)->update(['otp'=>$otp]);
+            $getotp=User::where('mobile',$mobile)->update(['otp'=>$otp]);
             return response()->json(['error' => false,'msg'=>'OTP sent successfully on your registered mobile no.']);
         }
         //echo "otp send done";
     }
 	
     //SUBMIT OTP
-     public function submitOtp(Request $request)
-    {	
+    public function submitOtp(Request $request)
+    {
         $otp = $request->json()->get("otp");
-        $data = Member::where('otp',$otp)->first();
-        if(!$data){
-            return response(['error' => true,'msg'=>'Invalid OTP']);
-        }elseif($otp == $data->otp) {
-                $id = $data->id;
-                $user = Member::where('id',$id)->update(['otp_verify_status'=>'1']);
-                $accessToken = $data->createToken('authToken')->accessToken;
-                DB::insert('insert into members(user_id) values(?)',[$data->id]);
-                return response(['error' => false,'msg'=>'OTP Verification Success','user_verify'=>true,'token'=>$accessToken]);
+        $data = User::where('otp',$otp)->first();
+        if(!empty($data)){
+			$id = $data->id;
+			$user = User::where('id',$id)->update(['otp_verify_status'=>'1']);
+			$accessToken = $data->createToken('authToken')->accessToken;
+			return response(['error' => false,'msg'=>'OTP Verification Success','user_verify'=>true,'token'=>$accessToken]);
+        }else {
+			return response(['error' => true,'msg'=>'Invalid OTP']);
         }
+
+    }
+	
+	public function login(Request $request){
+
+        $mobile=$request->json()->get("mobile");
+        $passwordOtp=$request->json()->get("password_otp");
+ 
+        $userResult = User::where('mobile',$mobile)->first();
+        if($userResult){
+            if(Hash::check($passwordOtp, $userResult->password)==true || ($userResult->otp==$passwordOtp)){
+                
+                $json['error']=false;
+
+                if($userResult->otp_verify_status=='1'){
+                    $json['user_verify']=true;
+                    $json['msg']='Login successfully';
+                    $json['token']=$userResult->createToken('authToken')->accessToken;
+                }else{
+                    $this->sendOtp($request);
+                    $json['msg']='Please first verify your account.';
+                    $json['user_verify']=false;
+                }
+            }else{
+                $json['error']=true;
+                $json['msg']="Invalid login credientials";
+            }
+        }else{
+            $json['error']=true;
+            $json['msg']="User does not exist.please try again.";
+        }
+
+        return response($json);
+
     }
 }
-//prelogin c
