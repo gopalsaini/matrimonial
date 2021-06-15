@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('active')
+@section('package')
 	bg-primary-grad
 @endsection
 @section('content')

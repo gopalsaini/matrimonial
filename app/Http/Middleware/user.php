@@ -4,9 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Session;
-use Illuminate\Http\Request;
-
-class admin
+class user
 {
     /**
      * Handle an incoming request.
@@ -15,19 +13,18 @@ class admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
-        $id = Session::get('usertoken');
+		$id = Session::get('user_token');
         if(isset($id))
         {
             
 
         }else{
             $request->session()->flash('error','Access Denied');
-            return redirect('/admin');
+            return redirect('/');
 
         }
-        
         return $next($request);
     }
 }

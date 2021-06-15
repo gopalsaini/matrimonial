@@ -772,8 +772,7 @@ function socialLogin_data(data)
             }
         }
     });
-}
-//google and facebook login 
+} 
 
 
 

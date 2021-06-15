@@ -98,4 +98,63 @@ class PreLoginController extends Controller
         return response($json);
 
     }
+	//free membership
+	public function FreeMembership(Request $request){
+		$freeData = user::where('membership','1')->where('status','1')->orderBy('id','asc')->get(); 
+		if(!empty($freeData)){
+			
+			return response(['error' => false,'msg'=>'Data Get Successfully', 'data'=>$freeData]);
+		}else{
+			
+			return response(['error' => true,'msg'=>'Data Not Available', 'data'=>[]]);
+		}
+		
+	
+	}
+	//premium membership
+	public function premiumMembership(Request $request){
+		$premiumMembership = user::where('membership','1')->where('status','2')->orderBy('id','asc')->get(); 
+		if(!empty($premiumMembership)){
+			
+			return response()->json(['msg' => 'Data Successfully Get',
+                'error' => 'true',
+                'data' =>  $premiumMembership
+            ]);
+		}else{
+			
+			return response(['error' => true,'msg'=>'Data Not Available', 'data'=>[]]);
+		}
+		
+	
+	}
+	//banner section
+	 public function banner()
+    {
+        $banner = Banner::all();
+        $count = count($banner);
+        if($count>0) {
+            return response()->json(['msg' => 'Data Successfully Get',
+                'error' => 'true',
+                'data' =>  $banner
+            ]);
+          }else {
+            return response()->json([
+                'msg' => 'Data Not Found',
+                'error' => 'flase',
+                'data'=>[]
+            
+            ]);
+          }
+    }
+	
+	public function logout(Request $request)
+	{
+		$token = Auth::user()->token();
+			$token->revoke();
+		
+		return response()->json([
+			'msg' => 'Successfully logged out'
+		]);
+	}
+	
 }

@@ -1,16 +1,28 @@
 @extends('layouts/app')
 @section('active')
-	bg-primary-grad
-@endsection
+bg-primary-grad
+@endsection 
 @section('content')
+@php
+$primumMembers = json_decode($primumMember,true);
+$freeMember=json_decode($freeMember,true);
+$banner=json_decode($banner,true);
+@endphp
 
 	<!-- Homepage Slider Section -->
 			<section class="position-relative overflow-hidden min-vh-100 d-flex home-slider-area">
       		    	<div class="absolute-full">
 				<div class="aiz-carousel aiz-carousel-full h-100" data-fade='true' data-infinite='true' data-autoplay='true'>
-					            			<img class="img-fit" src="https://demo.activeitzone.com/matrimonial/public/uploads/all/n6x1YZiGHc5AvVBB45JNnIAbXkQTqLf16bHMtwzu.png">
-					            			<img class="img-fit" src="https://demo.activeitzone.com/matrimonial/public/uploads/all/OkwfK3lo8BgrCkMuOA4NGeORw7g9ldcOp6ykrIeU.jpg">
-					            			<img class="img-fit" src="https://demo.activeitzone.com/matrimonial/public/uploads/all/cEOhVAwkzGE51HebB3Ky9CwQU3vLyKnW4DRMQ1mt.jpg">
+				@php $count="0"; @endphp
+			@if($banner['error'] == "true")
+             @foreach($banner['data'] as $key => $banners)
+					            			
+					            			<img class="img-fit" src="{{asset('uploads/banner')}}/{{$banners['image']}}">
+							@php $count++; @endphp
+							@endforeach
+							@else
+								data not found
+							@endif
 									</div>
 				<div class="absolute-full bg-white opacity-70 d-md-none"></div>
 	    	</div>
@@ -101,7 +113,8 @@
             </div>
          </div>
          <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="5" data-xl-items="4" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="1" data-dots='true' data-infinite='true'>
-            <div class="carousel-box">
+          <div class="carousel-box">
+			@foreach($primumMembers['data'] as $key => $primum_Member)
                <div class="rounded border position-relative overflow-hidden">
                   <a
                      onclick="loginModal()"
@@ -115,353 +128,18 @@
                      <div class="absolute-bottom-left w-100 p-3 z-1">
                         <div class="absolute-full bg-white opacity-90 z--1"></div>
                         <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Alex</div>
+                           <div class="text-primary fw-500 mb-1">{{$primum_Member['name']}}</div>
                            <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
+                              <span class="opacity-60">{{$primum_Member['code']}} </span>
                               <span class="ml-2 text-primary">BA5D7EEC</span>
                            </div>
                         </div>
                      </div>
                   </a>
                </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Derrick</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">8E09C136</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Donna</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">E0EE4E4D</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Sylvia</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">01E086DC</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Nicole</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">505CEF64</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Ramona</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">E2A2F0BA</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Kathy</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">BAF1EB94</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Robert</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">7223505B</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/uploads/all/ApRvIDurTmGrHYCP8HNrm5gQyfFByvt02JOnxDWg.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Mitchell</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">6AD6E375</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/uploads/all/JC54t9SJmTsyJnU7ZSj3AKE0WIHfZj9lZqIyuA4a.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Mark</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">8D6813CB</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Jane R</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">DDE87662</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/uploads/all/COOYX4Mb7j2DNZ5vGlLiG6XS2wOucEZhblm1775Y.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Lakendra</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">D89D3563</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/uploads/all/UZR9qdCaIqm7RLwZOsQo8YPd2PUBlt3aWKH9pU08.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Tate</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">6C1F58E3</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/uploads/all/zo8WHvxlUyiPrxwnrc6ztQE5u8MnJo2ej2UUl1JU.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Idona</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">9F8296FD</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/uploads/all/frIh1shOagKEHjg33H1CzyljjmGeg18jIjikmqxZ.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Olivia</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">66F7029D</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-         </div>
+			   @endforeach
+           </div>
+        </div>
       </div>
    </section>
    <!-- Banner section 1 -->
@@ -517,7 +195,7 @@
                      </div>
                   </div>
                </div>
-            </div>
+            </div> 
             <div class="col-lg">
                <div class="border p-3 mb-3">
                   <div class=" row align-items-center">
@@ -604,6 +282,7 @@
          </div>
          <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="5" data-xl-items="4" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="1" data-dots='true' data-infinite='true'>
             <div class="carousel-box">
+			@foreach($freeMember['data'] as $key => $free_Member)
                <div class="rounded border position-relative overflow-hidden">
                   <a
                      onclick="loginModal()"
@@ -617,231 +296,16 @@
                      <div class="absolute-bottom-left w-100 p-3 z-1">
                         <div class="absolute-full bg-white opacity-90 z--1"></div>
                         <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Sylvia</div>
+                           <div class="text-primary fw-500 mb-1">{{$free_Member['name']}}</div>
                            <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
+                              <span class="opacity-60">{{$free_Member['code']}} </span>
                               <span class="ml-2 text-primary">01E086DC</span>
                            </div>
                         </div>
                      </div>
                   </a>
                </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/uploads/all/ApRvIDurTmGrHYCP8HNrm5gQyfFByvt02JOnxDWg.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Mitchell</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">6AD6E375</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Wilson</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">A5F900A6</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Nicole</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">505CEF64</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Robert</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">7223505B</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Ramona</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">E2A2F0BA</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Derrick</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">8E09C136</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Alex</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">BA5D7EEC</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Donna</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">E0EE4E4D</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <div class="carousel-box">
-               <div class="rounded border position-relative overflow-hidden">
-                  <a
-                     onclick="loginModal()"
-                     class="d-block text-reset c-pointer"
-                     >
-                     <img
-                        src="https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png"
-                        onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';"
-                        class="img-fit mw-100 h-400px"
-                        >
-                     <div class="absolute-bottom-left w-100 p-3 z-1">
-                        <div class="absolute-full bg-white opacity-90 z--1"></div>
-                        <div class="text-center">
-                           <div class="text-primary fw-500 mb-1">Kathy</div>
-                           <div class="fs-10">
-                              <span class="opacity-60">Member ID: </span>
-                              <span class="ml-2 text-primary">BAF1EB94</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
+			   @endforeach
             </div>
          </div>
       </div>

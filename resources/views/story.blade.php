@@ -1,4 +1,4 @@
-
+@section('story')
 <!DOCTYPE html>
 <html lang="en">
 

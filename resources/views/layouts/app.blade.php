@@ -88,13 +88,216 @@
                         <span>9999999999 (Whatsapp Message Only)</span>
                         </a>
                      </li>
-                     <li class="list-inline-item ml-4">
+					 
+                     @if (Session::has('user_token'))
+						 
+                                                <li class="list-inline-item dropdown">
+                                                        <a href="javascript:void(0)" class="dropdown-toggle text-reset no-arrow p-5px"
+                                data-toggle="dropdown" data-display="static">
+                                <i class="las la-bell fs-16 opacity-60"></i>
+                                                                <span class="badge badge-dot badge-sm badge-status no-border badge-primary"></span>
+                                                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg py-0">
+                                <div class="p-3 bg-light border-bottom">
+                                    <h6 class="mb-0">Notifications</h6>
+                                </div>
+                                <ul class="list-group list-group-raw c-scrollbar-light"
+                                    style="overflow-y:auto;max-height:300px;">
+                                    <li class="list-group-item d-flex justify-content-between align-items-start hov-bg-soft-primary">
+                <a href="https://demo.activeitzone.com/matrimonial/notification-view/297" class="media text-inherit">
+                    <span class="avatar avatar-sm mr-3">
+                                                    <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/frIh1shOagKEHjg33H1CzyljjmGeg18jIjikmqxZ.png">
+                                            </span>
+                    <div class="media-body">
+                        <p class="mb-1">Olivia Emma</p>
+                        <small class="text-muted">
+                            Olivia Emma  has accepted your interest.
+                        </small>
+                    </div>
+                </a>
+                            </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start hov-bg-soft-primary">
+                <a href="https://demo.activeitzone.com/matrimonial/notification-view/296" class="media text-inherit">
+                    <span class="avatar avatar-sm mr-3">
+                                                    <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/frIh1shOagKEHjg33H1CzyljjmGeg18jIjikmqxZ.png">
+                                            </span>
+                    <div class="media-body">
+                        <p class="mb-1">Olivia Emma</p>
+                        <small class="text-muted">
+                            Olivia Emma  has rejected your interest.
+                        </small>
+                    </div>
+                </a>
+                                    <button class="btn p-0">
+                        <span class="badge badge-md  badge-dot badge-circle badge-primary"></span>
+                    </button>
+                            </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start hov-bg-soft-primary">
+                <a href="https://demo.activeitzone.com/matrimonial/notification-view/295" class="media text-inherit">
+                    <span class="avatar avatar-sm mr-3">
+                                                    <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/frIh1shOagKEHjg33H1CzyljjmGeg18jIjikmqxZ.png">
+                                            </span>
+                    <div class="media-body">
+                        <p class="mb-1">Olivia Emma</p>
+                        <small class="text-muted">
+                            Olivia Emma  has rejected your interest.
+                        </small>
+                    </div>
+                </a>
+                                    <button class="btn p-0">
+                        <span class="badge badge-md  badge-dot badge-circle badge-primary"></span>
+                    </button>
+                            </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start hov-bg-soft-primary">
+                <a href="https://demo.activeitzone.com/matrimonial/notification-view/294" class="media text-inherit">
+                    <span class="avatar avatar-sm mr-3">
+                                                    <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/frIh1shOagKEHjg33H1CzyljjmGeg18jIjikmqxZ.png">
+                                            </span>
+                    <div class="media-body">
+                        <p class="mb-1">Olivia Emma</p>
+                        <small class="text-muted">
+                            Olivia Emma  has accepted your interest.
+                        </small>
+                    </div>
+                </a>
+                                    <button class="btn p-0">
+                        <span class="badge badge-md  badge-dot badge-circle badge-primary"></span>
+                    </button>
+                            </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start hov-bg-soft-primary">
+                <a href="https://demo.activeitzone.com/matrimonial/notification-view/210" class="media text-inherit">
+                    <span class="avatar avatar-sm mr-3">
+                                                    <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/uVl6pf6oqBpZiJuai4iwU4KCRAGe9plsh5wDrnkN.png">
+                                            </span>
+                    <div class="media-body">
+                        <p class="mb-1">Ryan Ryan</p>
+                        <small class="text-muted">
+                            Your payment for package Silver Package has been approved. Payment Id: 210518-143354
+                        </small>
+                    </div>
+                </a>
+                            </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start hov-bg-soft-primary">
+                <a href="https://demo.activeitzone.com/matrimonial/notification-view/190" class="media text-inherit">
+                    <span class="avatar avatar-sm mr-3">
+                                                    <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/AKgrssE0aIV4yzwTzRQsBaNp93KS2PPp5wqMsld9.png">
+                                            </span>
+                    <div class="media-body">
+                        <p class="mb-1">Donnam J. Perryman</p>
+                        <small class="text-muted">
+                            Donnam J. Perryman  has accepted your interest.
+                        </small>
+                    </div>
+                </a>
+                            </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start hov-bg-soft-primary">
+                <a href="https://demo.activeitzone.com/matrimonial/notification-view/167" class="media text-inherit">
+                    <span class="avatar avatar-sm mr-3">
+                                                    <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/uVl6pf6oqBpZiJuai4iwU4KCRAGe9plsh5wDrnkN.png">
+                                            </span>
+                    <div class="media-body">
+                        <p class="mb-1">Ryan Ryan</p>
+                        <small class="text-muted">
+                            Your payment for package Bronze Package has been approved. Payment Id: 210508-031646
+                        </small>
+                    </div>
+                </a>
+                            </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start hov-bg-soft-primary">
+                <a href="https://demo.activeitzone.com/matrimonial/notification-view/165" class="media text-inherit">
+                    <span class="avatar avatar-sm mr-3">
+                                                    <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/uVl6pf6oqBpZiJuai4iwU4KCRAGe9plsh5wDrnkN.png">
+                                            </span>
+                    <div class="media-body">
+                        <p class="mb-1">Ryan Ryan</p>
+                        <small class="text-muted">
+                            Your payment for package Bronze Package has been approved. Payment Id: 210508-031646
+                        </small>
+                    </div>
+                </a>
+                            </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start hov-bg-soft-primary">
+                <a href="https://demo.activeitzone.com/matrimonial/notification-view/160" class="media text-inherit">
+                    <span class="avatar avatar-sm mr-3">
+                                                    <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/uVl6pf6oqBpZiJuai4iwU4KCRAGe9plsh5wDrnkN.png">
+                                            </span>
+                    <div class="media-body">
+                        <p class="mb-1">Ryan Ryan</p>
+                        <small class="text-muted">
+                            Your payment for package Bronze Package has been approved. Payment Id: 210508-031646
+                        </small>
+                    </div>
+                </a>
+                            </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start hov-bg-soft-primary">
+                <a href="https://demo.activeitzone.com/matrimonial/notification-view/159" class="media text-inherit">
+                    <span class="avatar avatar-sm mr-3">
+                                                    <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/uVl6pf6oqBpZiJuai4iwU4KCRAGe9plsh5wDrnkN.png">
+                                            </span>
+                    <div class="media-body">
+                        <p class="mb-1">Ryan Ryan</p>
+                        <small class="text-muted">
+                            Your payment for package Bronze Package has been approved. Payment Id: 210508-031646
+                        </small>
+                    </div>
+                </a>
+                            </li>
+                                            </ul>
+                                <div class="border-top">
+                                    <a href="https://demo.activeitzone.com/matrimonial/member/notifications"
+                                        class="btn text-reset btn-block">View All Notifications</a>
+                                </div>
+                            </div>
+                        </li>
+                                                <li class="list-inline-item dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle text-reset no-arrow p-5px"
+                                data-toggle="dropdown" data-display="static">
+                                <i class="las la-envelope fs-16 opacity-60"></i>
+                                                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg py-0">
+                                <div class="p-3 bg-light border-bottom">
+                                    <h6 class="mb-0">Messages</h6>
+                                </div>
+
+                                <div class="c-scrollbar-light" style="overflow-y:auto;max-height:300px;">
+                                                                        <div class="text-center py-4">
+                                        <i class="las la-frown la-4x mb-2 opacity-40"></i>
+                                        <h4 class="h6">No New Messages</h4>
+                                    </div>
+                                                                    </div>
+                                <div class="border-top">
+                                    <a href="https://demo.activeitzone.com/matrimonial/chat"
+                                        class="btn text-reset btn-block">View All Messages</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-inline-item mx-4">
+                            <a href="https://demo.activeitzone.com/matrimonial/dashboard" class="d-flex align-items-center text-reset">
+                                <img src="https://demo.activeitzone.com/matrimonial/public/uploads/all/uVl6pf6oqBpZiJuai4iwU4KCRAGe9plsh5wDrnkN.png"
+                                    class="size-30px rounded-circle img-fit mr-2"
+                                    onerror="this.onerror=null;this.src='https://demo.activeitzone.com/matrimonial/public/assets/img/avatar-place.png';">
+                                <span class="opacity-60 mr-1">
+                                    Hi,
+                                </span>
+                                <span class="text-primary-grad fw-700">
+                                    Ryan
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{{url('/logout')}}"
+                                class="btn btn-sm bg-primary-grad text-white fw-600 py-1 border">Logout</a>
+                        </li>
+                             
+					 @else
+					<li class="list-inline-item ml-4">
                         <a class="text-reset opacity-60" href="{{url('/login')}}">Log In</a>
                      </li>
                      <li class="list-inline-item ml-3">
                         <a class="btn btn-sm bg-primary-grad text-white fw-600 py-1 border"
                            href="{{url('/register')}}">Registration</a>
                      </li>
+					 @endif
                   </ul>
                </div>
             </div>
@@ -119,20 +322,20 @@
                         </a>
                      </li>
                      <li
-                        class="d-inline-block d-lg-flex pb-1 ">
+                        class="d-inline-block d-lg-flex pb-1 @yield('members')">
                         <a class="nav-link text-uppercase fw-700 fs-15 d-flex align-items-center bg-white py-2"
-                           href="{{url('/')}}">
+                           href="{{url('/login')}}">
                         <span class="text-primary-grad mb-n1">Active Members</span>
                         </a>
                      </li>
-                     <li class="d-inline-block d-lg-flex pb-1 ">
+                     <li class="d-inline-block d-lg-flex pb-1 @yield('package')">
                         <a class="nav-link text-uppercase fw-700 fs-15 d-flex align-items-center bg-white py-2"
                            href="{{url('/packages')}}">
                         <span class="text-primary-grad mb-n1">Premium Plans</span>
                         </a>
                      </li>
                      <li
-                        class="d-inline-block d-lg-flex pb-1 ">
+                        class="d-inline-block d-lg-flex pb-1 @yield('story')">
                         <a class="nav-link text-uppercase fw-700 fs-15 d-flex align-items-center bg-white py-2"
                            href="{{url('/happy-stories')}}">
                         <span class="text-primary-grad mb-n1">Happy Stories</span>

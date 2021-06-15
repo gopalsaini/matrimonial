@@ -1,6 +1,5 @@
 @extends('layouts/app')
 @section('content')
-
 <div class="py-4 py-lg-5">
     <div class="container">
         <div class="row">

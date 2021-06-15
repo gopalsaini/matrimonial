@@ -14,6 +14,8 @@ use App\Http\Controllers\commanController;
 |
 */
 
+
+
 //for admin
 Route::view('/admin', 'admin.login');
 Route::post('/admin', 'AdminController@login')->name('admin');
@@ -99,9 +101,7 @@ Route::get('/admin/maritalStatus/{id}','Admin\MaritalStatusController@edit');
 
 });  
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('/test', function () {
     return view('test');
 });
@@ -109,13 +109,11 @@ Route::get('/test', function () {
 Route::get('/packages', function () {
     return view('packages');
 });
-Route::get('/story', function () {
+Route::get('/happy-stories', function () {
     return view('story');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+
 
 Route::get('/profile', function () {
     return view('profile');
@@ -138,19 +136,26 @@ Route::get('/chat', function () {
 Route::get('/profile-settings', function () {
     return view('profile_settings');
 });
-Route::get('/requests', function () {
-    return view('requests');
-});
+
 Route::get('/profile', function () {
     return view('profile');
 });
 
 
 
-Auth::routes();
-Route::post('/registerform', 'commanController@registration');
-Route::get('/home', 'HomeController@index')->name('home');
 //otp send
 Route::post('/submitotp', 'commanController@submitOtp');
 Route::post('/user/sendotp', 'commanController@sendotp');
 Route::post('/user/login', 'commanController@login');
+Route::get('/', 'commanController@index');
+Route::get('/logout', 'commanController@logout');
+
+//user
+Route::group(['middleware' => 'user'], function () {
+	Route::view('/change-password', 'change-password');
+	Route::post('/change-password', 'commanController@changePassword');
+	Route::get('/dashboard','commanController@userProfile');
+	Route::view('/members','update-member');
+});
+
+Auth::routes();

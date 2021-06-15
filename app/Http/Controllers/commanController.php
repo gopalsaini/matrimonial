@@ -101,6 +101,55 @@ class commanController extends Controller
 		return $login;
         
     }
-
+	
+	public function index(Request $request)
+	{	
+		$banner=commonHelper::callAPI('GET','/banner',array());
+        $freeMember=commonHelper::callAPI('GET','/free-membership',array());
+		$primumMember=commonHelper::callAPI('GET','/primum-membership',array());
+		return view('/welcome')->with(['banner'=>$banner])->with(['freeMember'=>$freeMember])->with(['primumMember'=>$primumMember]);
+	}
+	
+	//user logout
+	public function logout(Request $request){
+		if(!empty($logout)){
+			$request->session()->forget('user_token');
+			return redirect('/');
+		}else{
+			return redirect('/dashboard');
+		}
+	}
+	//user profile
+	public function userProfile(Request $request)
+	{
+		$userProfile=commonHelper::callAPI('userTokenget','/user-profile',array());
+		$matchProfile=commonHelper::callAPI('userTokenget','/match-profile',array());
+		return view('dashboard')->with(['userProfile'=>$userProfile,'matchProfile'=>$matchProfile]);
+	}
+	
+	//change password    
+	public function changePassword(Request $request){
+       if ($request->ajax()) { 
+	   $validator = \Validator::make($request->all(), [
+	   'oldpassword' => 'required',
+	   'new_password' => 'required',
+		'confirm_password' => 'required_with:new_password|same:new_password'
+	   ]);
+	   if ($validator->fails())
+            {
+                return response(['error'=>true,'msg'=>$validator->errors()->all()]);
+            }
+			$oldpassword =$request->post('oldpassword');
+			$new_password =$request->post('new_password');
+            $data=json_encode(['oldpassword'=>$oldpassword,'new_password'=>$new_password]);
+	   };
+	   return $change=commonHelper::callAPI('userTokenpost','/change-password',$data);
+	   
+	}
+	//change password    
+	public function matchProfile(Request $request){
+		
+		
+	}
 }
 
